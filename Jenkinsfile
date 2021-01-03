@@ -8,6 +8,6 @@ node{
   stage('Email Notification'){
      mail bcc: '', body: '''Hi Welcome to Jenkins alerts 
 Thanks
-Vidyasagar''', cc: '', from: '', replyTo: '', subject: '', to: 'vidyasagar.kolusu@gmail.com'
+Vidyasagar''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'vidyasagar.kolusu@gmail.com'
   }
 }

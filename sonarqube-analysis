@@ -1,0 +1,19 @@
+node{
+  stage('SCM Checkout'){
+    git 'https://github.com/vidyasagarkolusu/ownapp.git'
+  }
+  stage('Compile-Package'){
+    sh 'mvn package'
+  }
+   stage('SonarQube Analysis') {
+        def mvnHome =  tool name: 'mymaven', type: 'maven'
+        withSonarQubeEnv('sonar21') { 
+          sh 'mvn sonar:sonar'
+        }
+    }
+  stage('Email Notification'){
+     mail bcc: '', body: '''Hi Welcome to Jenkins alerts 
+Thanks
+Vidyasagar''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'vidyasagar.kolusu@gmail.com'
+  }
+}
